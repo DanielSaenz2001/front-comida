@@ -10,6 +10,13 @@ import { AlmacenComponent } from './pages/almacen/almacen.component';
 import { CajaComponent } from './pages/caja/caja.component';
 import { EmpleadoComponent } from './pages/empleado/empleado.component';
 import { TipoPagoComponent } from './pages/tipo-pago/tipo-pago.component';
+import { EstablecimientoFormComponent } from './pages/establecimiento/form/establecimiento-form.component';
+import { SharedMaterialModule } from 'src/app/shared/shared-material.module';
+import { SurcursalFormComponent } from './pages/sucursal/form/surcursal-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CajaFormComponent } from './pages/caja/form/caja-form.component';
+import { AlmacenFormComponent } from './pages/almacen/form/almacen-form.component';
+import { TipoPagoFormComponent } from './pages/tipo-pago/form/tipo-pago-form.component';
 
 
 @NgModule({
@@ -19,11 +26,19 @@ import { TipoPagoComponent } from './pages/tipo-pago/tipo-pago.component';
     AlmacenComponent,
     CajaComponent,
     EmpleadoComponent,
-    TipoPagoComponent
+    TipoPagoComponent,
+    EstablecimientoFormComponent,
+    SurcursalFormComponent,
+    CajaFormComponent,
+    AlmacenFormComponent,
+    TipoPagoFormComponent
   ],
   imports: [
+    SharedMaterialModule,
     CommonModule,
-    LogisticaRoutingModule
+    LogisticaRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {

@@ -1,0 +1,106 @@
+<div class="modal-container">
+    <div mat-dialog-title>
+        <div class="row">
+            <div class="col-10">
+                SUCURSAL
+            </div>
+            <div class="col-2">
+                <button mat-icon-button aria-label="Cerrar la ventana" tabindex="-1" matTooltip="Cerrar" [mat-dialog-close]="null">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+        <form>
+            <mat-card class="form-container">
+                <mat-card-content>
+                    <div class="row" [formGroup]="formGroup">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <mat-select color="accent" placeholder="Establecimiento" status="primary" formControlName="establecimiento_id">
+                                            <mat-option *ngFor="let item of establecimientos" [value]="item.id">{{item.empresa}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('establecimiento_id')?.hasError('required') && (formGroup.get('establecimiento_id')?.dirty || formGroup.get('establecimiento_id')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="direccion" 
+                                            formControlName="direccion">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('direccion')?.hasError('required') && (formGroup.get('direccion')?.dirty || formGroup.get('direccion')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="representante" 
+                                            formControlName="representante">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('representante')?.hasError('required') && (formGroup.get('representante')?.dirty || formGroup.get('representante')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="administrador" 
+                                            formControlName="administrador">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('administrador')?.hasError('required') && (formGroup.get('administrador')?.dirty || formGroup.get('administrador')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="coordinador" 
+                                            formControlName="coordinador">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('coordinador')?.hasError('required') && (formGroup.get('coordinador')?.dirty || formGroup.get('coordinador')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="telefono" 
+                                            formControlName="telefono">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('telefono')?.hasError('required') && (formGroup.get('telefono')?.dirty || formGroup.get('telefono')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <button type="button" mat-raised-button color="primary" (click)="save($event)" [disabled]="!formGroup.valid" >
+            <mat-icon>save</mat-icon> GUARDAR
+        </button>
+    </mat-dialog-actions>
+</div>

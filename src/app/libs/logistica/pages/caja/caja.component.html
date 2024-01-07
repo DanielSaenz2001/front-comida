@@ -1,1 +1,65 @@
-<p>caja works!</p>
+<div class="container-page">
+    <h2 class="text-center">CAJA</h2>
+
+    <mat-card>
+        <table 
+            class="table-three-dots" 
+            mat-table matSort 
+            [dataSource]="data"
+            *ngIf="data.length > 0">
+
+                <ng-container matColumnDef="sucursal">
+                    <th mat-header-cell *matHeaderCellDef>SUCURSAL</th>
+
+                    <td mat-cell *matCellDef="let row">{{ row.sucursal }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="codigo">
+                    <th mat-header-cell *matHeaderCellDef>CÓDIGO</th>
+
+                    <td mat-cell *matCellDef="let row">{{ row.codigo }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="estado">
+                    <th mat-header-cell *matHeaderCellDef>ESTADO</th>
+
+                    <td mat-cell *matCellDef="let row">{{ row.estado }}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="actions">
+                    <th mat-header-cell *matHeaderCellDef></th>
+
+                    <td mat-cell *matCellDef="let row">
+                        <button 
+                            mat-mini-fab 
+                            color="white" 
+                            class="mat-btn-actions mat-elevation-z2"
+                            matTooltip="EDITAR"
+                            (click)="openForm(row.id)">
+                                <mat-icon>edit</mat-icon>
+                        </button>
+                        
+                        <button 
+                            mat-mini-fab 
+                            color="white" 
+                            class="mat-btn-actions mat-elevation-z2"
+                            matTooltip="ELIMINAR"
+                            (click)="destroy(row.id)">
+                                <mat-icon>delete</mat-icon>
+                        </button>
+                    </td>
+                </ng-container>
+
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+                <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+        </table>
+    </mat-card>
+    
+    <button
+        mat-fab
+        class="btn-open-form"
+        (click)="openForm(0)">
+        <mat-icon>add</mat-icon>
+    </button>
+</div>
