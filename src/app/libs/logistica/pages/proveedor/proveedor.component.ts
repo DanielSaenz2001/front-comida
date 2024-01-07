@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { CajaService } from '../../services/caja.service';
-import { MatDialog } from '@angular/material/dialog';
+import { ProveedorService } from '../../services/proveedor.service';
 import { Overlay } from '@angular/cdk/overlay';
-import { CajaFormComponent } from './form/caja-form.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ProveedorFormComponent } from './form/proveedor-form.component';
 
 @Component({
-  selector: 'app-caja',
-  templateUrl: './caja.component.html',
-  styleUrls: ['./caja.component.scss']
+  selector: 'app-proveedor',
+  templateUrl: './proveedor.component.html',
+  styleUrls: ['./proveedor.component.scss']
 })
-export class CajaComponent implements OnInit {
+export class ProveedorComponent implements OnInit {
 
   data = Array<any>();
 
@@ -18,7 +18,7 @@ export class CajaComponent implements OnInit {
   constructor(
     private matDialog: MatDialog,
     private overlay: Overlay,
-    private cajaService: CajaService
+    private proveedorService: ProveedorService
   ) { 
     this.initialComponent();
     this.loadData();
@@ -28,14 +28,14 @@ export class CajaComponent implements OnInit {
   }
 
   private loadData() {
-    this.cajaService.index().subscribe({
+    this.proveedorService.index().subscribe({
       next: (response) => this.data = response,
       error: (e) => console.log(e),
     });
   }
 
   destroy(id: any){
-    this.cajaService.destroy(id).subscribe({
+    this.proveedorService.destroy(id).subscribe({
       next: () => { this.loadData();
       },
       error: (e) => console.log(e),
@@ -45,15 +45,18 @@ export class CajaComponent implements OnInit {
   private initialComponent() {
 
     this.displayedColumns = [
-      'sucursal',
-      'codigo',
+      'empresa',
+      'ruc',
+      'representante',
+      'email',
+      'telefono',
       'estado',
       'actions'
     ];
   }
   
   openForm(dataId: number) {
-    this.matDialog.open(CajaFormComponent, {
+    this.matDialog.open(ProveedorFormComponent, {
       width: '600px',
       panelClass: 'mat-dialog-padding',
       disableClose: true,

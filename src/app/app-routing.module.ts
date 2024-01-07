@@ -29,6 +29,11 @@ const routes: Routes = [
       {
         path: 'logistica',
         loadChildren: () => import("./libs/logistica/logistica.module").then(m => m.LogisticaModule)
+      },
+      
+      {
+        path: 'almacen',
+        loadChildren: () => import("./libs/almacen/almacen.module").then(m => m.AlmacenModule)
       }
     ]
   },

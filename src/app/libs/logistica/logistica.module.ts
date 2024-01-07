@@ -17,6 +17,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CajaFormComponent } from './pages/caja/form/caja-form.component';
 import { AlmacenFormComponent } from './pages/almacen/form/almacen-form.component';
 import { TipoPagoFormComponent } from './pages/tipo-pago/form/tipo-pago-form.component';
+import { TipoPagoDetalleComponent } from './pages/tipo-pago/detalle/tipo-pago-detalle.component';
+import { EmpleadoFormComponent } from './pages/empleado/form/empleado-form.component';
+import { ProveedorComponent } from './pages/proveedor/proveedor.component';
+import { ProveedorFormComponent } from './pages/proveedor/form/proveedor-form.component';
 
 
 @NgModule({
@@ -31,7 +35,11 @@ import { TipoPagoFormComponent } from './pages/tipo-pago/form/tipo-pago-form.com
     SurcursalFormComponent,
     CajaFormComponent,
     AlmacenFormComponent,
-    TipoPagoFormComponent
+    TipoPagoFormComponent,
+    TipoPagoDetalleComponent,
+    EmpleadoFormComponent,
+    ProveedorComponent,
+    ProveedorFormComponent
   ],
   imports: [
     SharedMaterialModule,

@@ -1,0 +1,109 @@
+<div class="modal-container">
+    <div mat-dialog-title>
+        <div class="row">
+            <div class="col-10">
+                EMPLEADO
+            </div>
+            <div class="col-2">
+                <button mat-icon-button aria-label="Cerrar la ventana" tabindex="-1" matTooltip="Cerrar" [mat-dialog-close]="null">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+        <form>
+            <mat-card class="form-container">
+                <mat-card-content>
+                    <div class="row" [formGroup]="formGroup">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <mat-select color="accent" placeholder="Sucursales" status="primary" formControlName="sucursal_id" (selectionChange)="select($event.value)">
+                                            <mat-option *ngFor="let item of establecimientos" [value]="item.id">{{item.empresa}} - {{item.direccion}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('sucursal_id')?.hasError('required') && (formGroup.get('sucursal_id')?.dirty || formGroup.get('sucursal_id')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <mat-select color="accent" placeholder="Usuarios" status="primary" formControlName="user_id">
+                                            <mat-option *ngFor="let item of usuarios" [value]="item.id">{{ item.ap_paterno }} {{ item.ap_materno }} {{ item.nombres }}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('user_id')?.hasError('required') && (formGroup.get('user_id')?.dirty || formGroup.get('user_id')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2" *ngIf="formGroup.value.isCaja">
+                                    <mat-form-field>
+                                        <mat-select color="accent" placeholder="Cajas" status="primary" formControlName="caja_id">
+                                            <mat-option *ngFor="let item of cajas" [value]="item.id">{{ item.codigo }}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('caja_id')?.hasError('required') && (formGroup.get('caja_id')?.dirty || formGroup.get('caja_id')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2" *ngIf="formGroup.value.isAlmacen">
+                                    <mat-form-field>
+                                        <mat-select color="accent" placeholder="Almacenes" status="primary" formControlName="almacen_id">
+                                            <mat-option *ngFor="let item of almacenes" [value]="item.id">{{ item.direccion }}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('almacen_id')?.hasError('required') && (formGroup.get('almacen_id')?.dirty || formGroup.get('almacen_id')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-checkbox status="primary" formControlName="isCaja">es Caja</mat-checkbox>
+                                
+                                    <mat-error *ngIf="formGroup.get('isCaja')?.hasError('required') && (formGroup.get('isCaja')?.dirty || formGroup.get('isCaja')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-checkbox status="primary" formControlName="isAlmacen">es Almacen</mat-checkbox>
+                                
+                                    <mat-error *ngIf="formGroup.get('isAlmacen')?.hasError('required') && (formGroup.get('isAlmacen')?.dirty || formGroup.get('isAlmacen')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-checkbox status="primary" formControlName="isMoso">es Moso</mat-checkbox>
+                                
+                                    <mat-error *ngIf="formGroup.get('isMoso')?.hasError('required') && (formGroup.get('isMoso')?.dirty || formGroup.get('isMoso')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-checkbox status="primary" formControlName="estado">Estado</mat-checkbox>
+                                
+                                    <mat-error *ngIf="formGroup.get('estado')?.hasError('required') && (formGroup.get('estado')?.dirty || formGroup.get('estado')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <button type="button" mat-raised-button color="primary" (click)="save($event)" [disabled]="!formGroup.valid" >
+            <mat-icon>save</mat-icon> GUARDAR
+        </button>
+    </mat-dialog-actions>
+</div>

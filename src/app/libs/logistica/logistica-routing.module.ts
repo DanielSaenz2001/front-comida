@@ -6,6 +6,7 @@ import { CajaComponent } from './pages/caja/caja.component';
 import { AlmacenComponent } from './pages/almacen/almacen.component';
 import { EmpleadoComponent } from './pages/empleado/empleado.component';
 import { TipoPagoComponent } from './pages/tipo-pago/tipo-pago.component';
+import { ProveedorComponent } from './pages/proveedor/proveedor.component';
 
 const routes: Routes = [
   {path: 'establecimiento', component: EstablecimientoComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'almacen', component: AlmacenComponent},
   {path: 'empleado', component: EmpleadoComponent},
   {path: 'tipo-pago', component: TipoPagoComponent},
+  {path: 'proveedor', component: ProveedorComponent},
 ];
 
 @NgModule({

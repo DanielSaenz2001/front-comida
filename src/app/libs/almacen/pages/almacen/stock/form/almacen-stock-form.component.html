@@ -2,7 +2,7 @@
     <div mat-dialog-title>
         <div class="row">
             <div class="col-10">
-                CAJA
+                PRODUCTO
             </div>
             <div class="col-2">
                 <button mat-icon-button aria-label="Cerrar la ventana" tabindex="-1" matTooltip="Cerrar" [mat-dialog-close]="null">
@@ -21,13 +21,24 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-6 mb-2">
                                     <mat-form-field>
-                                        <input matInput 
-                                            status="primary" 
-                                            placeholder="nombre" 
-                                            formControlName="nombre">
+                                        <mat-select color="accent" placeholder="Producto" status="primary" formControlName="producto_id">
+                                            <mat-option *ngFor="let item of productos" [value]="item.id">{{item.nombre}} | {{item.unidad}}</mat-option>
+                                        </mat-select>
                                     </mat-form-field>
                                 
-                                    <mat-error *ngIf="formGroup.get('nombre')?.hasError('required') && (formGroup.get('nombre')?.dirty || formGroup.get('nombre')?.touched)">
+                                    <mat-error *ngIf="formGroup.get('unidad')?.hasError('required') && (formGroup.get('unidad')?.dirty || formGroup.get('unidad')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="stock" 
+                                            formControlName="stock">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('stock')?.hasError('required') && (formGroup.get('stock')?.dirty || formGroup.get('stock')?.touched)">
                                         Este campo es importante.
                                     </mat-error>
                                 </div>

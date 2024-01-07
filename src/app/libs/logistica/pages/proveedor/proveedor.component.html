@@ -1,5 +1,5 @@
 <div class="container-page">
-    <h2 class="text-center">EMPLEADO</h2>
+    <h2 class="text-center">PROVEEDOR</h2>
 
     <mat-card>
         <table 
@@ -8,45 +8,38 @@
             [dataSource]="data"
             *ngIf="data.length > 0">
 
-
                 <ng-container matColumnDef="empresa">
                     <th mat-header-cell *matHeaderCellDef>EMPRESA</th>
 
                     <td mat-cell *matCellDef="let row">{{ row.empresa }}</td>
                 </ng-container>
 
-                <ng-container matColumnDef="sucursal">
-                    <th mat-header-cell *matHeaderCellDef>SUCURSAL</th>
+                <ng-container matColumnDef="ruc">
+                    <th mat-header-cell *matHeaderCellDef>RUC</th>
 
-                    <td mat-cell *matCellDef="let row">{{ row.sucursal }}</td>
+                    <td mat-cell *matCellDef="let row">{{ row.ruc }}</td>
                 </ng-container>
 
-                <ng-container matColumnDef="nombres">
-                    <th mat-header-cell *matHeaderCellDef>NOMBRES</th>
+                <ng-container matColumnDef="representante">
+                    <th mat-header-cell *matHeaderCellDef>REPRESENTANTE</th>
 
-                    <td mat-cell *matCellDef="let row">{{ row.ap_paterno }} {{ row.ap_materno }} {{ row.nombres }}</td>
+                    <td mat-cell *matCellDef="let row">{{ row.representante }}</td>
                 </ng-container>
 
-                <ng-container matColumnDef="isCaja">
-                    <th mat-header-cell *matHeaderCellDef>Es Caja</th>
+                <ng-container matColumnDef="email">
+                    <th mat-header-cell *matHeaderCellDef>EMAIL</th>
 
-                    <td mat-cell *matCellDef="let row">{{ row.isCaja }}</td>
+                    <td mat-cell *matCellDef="let row">{{ row.email }}</td>
                 </ng-container>
 
-                <ng-container matColumnDef="isAlmacen">
-                    <th mat-header-cell *matHeaderCellDef>Es Almacen</th>
+                <ng-container matColumnDef="telefono">
+                    <th mat-header-cell *matHeaderCellDef>TÉLEFONO</th>
 
-                    <td mat-cell *matCellDef="let row">{{ row.isAlmacen }}</td>
-                </ng-container>
-
-                <ng-container matColumnDef="isMoso">
-                    <th mat-header-cell *matHeaderCellDef>Es Mozo</th>
-
-                    <td mat-cell *matCellDef="let row">{{ row.isMoso }}</td>
+                    <td mat-cell *matCellDef="let row">{{ row.telefono }}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="estado">
-                    <th mat-header-cell *matHeaderCellDef>Estado</th>
+                    <th mat-header-cell *matHeaderCellDef>ESTADO</th>
 
                     <td mat-cell *matCellDef="let row">{{ row.estado }}</td>
                 </ng-container>
@@ -55,7 +48,6 @@
                     <th mat-header-cell *matHeaderCellDef></th>
 
                     <td mat-cell *matCellDef="let row">
-
                         <button 
                             mat-mini-fab 
                             color="white" 

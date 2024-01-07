@@ -1,0 +1,60 @@
+<div class="modal-container">
+    <div mat-dialog-title>
+        <div class="row">
+            <div class="col-10">
+                CAJA
+            </div>
+            <div class="col-2">
+                <button mat-icon-button aria-label="Cerrar la ventana" tabindex="-1" matTooltip="Cerrar" [mat-dialog-close]="null">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+        <form>
+            <mat-card class="form-container">
+                <mat-card-content>
+                    <div class="row mb-2">
+                        <div class="col-12 col-sm-8">
+                            <mat-form-field>
+                                <mat-select color="accent" placeholder="Sucursal" status="primary" [(ngModel)]="sucursal_id" [ngModelOptions]="{standalone: true}">
+                                    <mat-option *ngFor="let item of newSuc" [value]="item.id">{{item.direccion}} | {{item.administrador}}</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12 col-sm-4">
+                            <button mat-icon-button color="primary" (click)="addSucursal()" [disabled]="isProcessing || sucursal_id === 0">
+                                <mat-icon>save</mat-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <h3 style="text-align: center;">Sus Permisos</h3>
+                        <div class="col-12">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th scope="col"><h6>#</h6></th>
+                                    <th scope="col"><h6>Permiso</h6></th>
+                                    <th scope="col"></th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let item of nowSuc">
+                                    <td scope="col">1</td>
+                                    <td>{{item.direccion}} | {{item.administrador}}</td>
+                                    <td>
+                                        <button mat-button color="danger" (click)="deleteSucursal(item.id)" [disabled]="isProcessing">X</button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-dialog-content>
+</div>

@@ -5,14 +5,10 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class TipoPagoService {
+export class ProductoService {
 
-  endPoint =`${environment.api}/api/tipo-pago`
+  endPoint =`${environment.api}/api/producto`
   constructor(private http:HttpClient) { }
-  
-  public getSucursales( ) {
-    return this.http.get<Array<any>>(`${this.endPoint}/sucursales/all` ) ;
-  }
 
   public index( ) {
     return this.http.get<Array<any>>(`${this.endPoint}` ) ;
@@ -20,10 +16,6 @@ export class TipoPagoService {
 
   public getById(id:any) {
     return this.http.get(`${this.endPoint}/${id}` ) ;
-  }
-
-  public getSucursalesById(id:any) {
-    return this.http.get<any>(`${this.endPoint}/suc/${id}`) ;
   }
 
   public create(data:any) {
@@ -36,14 +28,5 @@ export class TipoPagoService {
 
   public destroy(id:any) {
     return this.http.delete(`${this.endPoint}/${id}` ) ;
-  }
-
-  //Sucursal
-  public add(tipo_id: any, suc_id: any) {
-    return this.http.get<any>(`${this.endPoint}/addSucursal/${tipo_id}/${suc_id}` );
-  }
-
-  public dlt(tipo_id: any, suc_id: any) {
-    return this.http.get<any>(`${this.endPoint}/dltSucursal/${tipo_id}/${suc_id}` );
   }
 }

@@ -2,7 +2,7 @@
     <div mat-dialog-title>
         <div class="row">
             <div class="col-10">
-                ENLACE
+                PRODUCTO
             </div>
             <div class="col-2">
                 <button mat-icon-button aria-label="Cerrar la ventana" tabindex="-1" matTooltip="Cerrar" [mat-dialog-close]="null">
@@ -19,11 +19,11 @@
                     <div class="row" [formGroup]="formGroup">
                         <div class="col-12">
                             <div class="row">
-                                <div class="col-12 mb-2">
+                                <div class="col-sm-12 col-md-6 mb-2">
                                     <mat-form-field>
                                         <input matInput 
                                             status="primary" 
-                                            placeholder="Nombre" 
+                                            placeholder="nombre" 
                                             formControlName="nombre">
                                     </mat-form-field>
                                 
@@ -31,56 +31,36 @@
                                         Este campo es importante.
                                     </mat-error>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 mb-2">
+                                <div class="col-sm-12 col-md-6 mb-2">
                                     <mat-form-field>
                                         <input matInput 
                                             status="primary" 
-                                            placeholder="Link" 
-                                            formControlName="link">
+                                            placeholder="unidad" 
+                                            formControlName="unidad">
                                     </mat-form-field>
                                 
-                                    <mat-error *ngIf="formGroup.get('link')?.hasError('required') && (formGroup.get('link')?.dirty || formGroup.get('link')?.touched)">
+                                    <mat-error *ngIf="formGroup.get('unidad')?.hasError('required') && (formGroup.get('unidad')?.dirty || formGroup.get('unidad')?.touched)">
                                         Este campo es importante.
                                     </mat-error>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 mb-2">
+                                <div class="col-sm-12 col-md-6 mb-2">
                                     <mat-form-field>
                                         <input matInput 
                                             status="primary" 
-                                            placeholder="Icono" 
-                                            formControlName="icon">
+                                            placeholder="complemento" 
+                                            formControlName="complemento">
                                     </mat-form-field>
                                 
-                                    <mat-error *ngIf="formGroup.get('icon')?.hasError('required') && (formGroup.get('icon')?.dirty || formGroup.get('icon')?.touched)">
+                                    <mat-error *ngIf="formGroup.get('complemento')?.hasError('required') && (formGroup.get('complemento')?.dirty || formGroup.get('complemento')?.touched)">
                                         Este campo es importante.
                                     </mat-error>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 mb-2">
-                                    <mat-form-field>
-                                        <mat-select placeholder="Orden" status="primary" formControlName="orden">
-                                            <mat-option [value]="1"> 1 </mat-option>
-                                            <mat-option [value]="2"> 2 </mat-option>
-                                            <mat-option [value]="3"> 3 </mat-option>
-                                            <mat-option [value]="4"> 4 </mat-option>
-                                            <mat-option [value]="5"> 5 </mat-option>
-                                            <mat-option [value]="6"> 6 </mat-option>
-                                        </mat-select>
-                                    </mat-form-field>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-checkbox status="primary" formControlName="estado">Estado</mat-checkbox>
                                 
-                                    <mat-error *ngIf="formGroup.get('orden')?.hasError('required') && (formGroup.get('orden')?.dirty || formGroup.get('orden')?.touched)">
+                                    <mat-error *ngIf="formGroup.get('estado')?.hasError('required') && (formGroup.get('estado')?.dirty || formGroup.get('estado')?.touched)">
                                         Este campo es importante.
                                     </mat-error>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 mb-2">
-                                    <mat-checkbox status="primary" formControlName="visible">Visible</mat-checkbox>
                                 </div>
                             </div>
                         </div>

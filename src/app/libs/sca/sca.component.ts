@@ -107,6 +107,10 @@ export class ScaComponent implements OnInit {
         this.portal = "Logistica";
         this.menus = element.children;
       }
+      if(element.link == "/almacen" &&  href.includes(element.link)){
+        this.portal = "Almacen";
+        this.menus = element.children;
+      }
     });
   }
 }
