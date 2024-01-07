@@ -1,0 +1,17 @@
+<div class="container-form">
+    <div class="background-image"></div>
+    <mat-card class="card">
+        <h2 class="text-center">Recuperar Contraseña</h2>
+        <form>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput type="text" placeholder="Ingresa tu correo" required>
+            </mat-form-field>
+    
+            <button mat-raised-button color="primary" type="submit">Recuperar</button>
+        </form>
+        <h3 class="text-center font-bold forget mt-1">
+            <span [routerLink]="['/auth/login']">Regresar</span>
+        </h3>
+    </mat-card>
+</div>

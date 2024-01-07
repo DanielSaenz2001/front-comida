@@ -1,0 +1,66 @@
+<div class="modal-container">
+    <div mat-dialog-title>
+        <div class="row">
+            <div class="col-10">
+                PERMISO
+            </div>
+            <div class="col-2">
+                <button mat-icon-button aria-label="Cerrar la ventana" tabindex="-1" matTooltip="Cerrar" [mat-dialog-close]="null">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+        <form>
+            <mat-card class="form-container">
+                <mat-card-content>
+                    <div class="row" [formGroup]="formGroup">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" fullWidth 
+                                            placeholder="Nombre" 
+                                            formControlName="nombre">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('nombre')?.hasError('required') && (formGroup.get('nombre')?.dirty || formGroup.get('nombre')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" fullWidth 
+                                            placeholder="Código" 
+                                            formControlName="codigo">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('codigo')?.hasError('required') && (formGroup.get('codigo')?.dirty || formGroup.get('codigo')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 mb-2">
+                                    <mat-checkbox status="primary" formControlName="activo">Estado</mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <button type="button" mat-raised-button color="primary" (click)="save($event)" [disabled]="!formGroup.valid" >
+            <mat-icon>save</mat-icon> GUARDAR
+        </button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,22 @@
+<div class="container-form">
+    <div class="background-image"></div>
+    <mat-card class="card">
+        <h2 class="text-center">Login</h2>
+        <form [formGroup]="loginForm">
+            <mat-form-field>
+                <mat-label>Nombre de usuario</mat-label>
+                <input matInput type="text" placeholder="Ingresa tu usuario" formControlName="username">
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Contraseña</mat-label>
+                <input matInput type="password" placeholder="Ingresa tu contraseña" formControlName="password">
+            </mat-form-field>
+    
+            <button mat-raised-button color="primary" (click)="login()">Iniciar sesión</button>
+        </form>
+        <h3 class="text-center font-bold forget mt-1">
+            <span [routerLink]="['/auth/olvide-contra']">¿Olvide mi contraseña?</span>
+        </h3>
+    </mat-card>
+</div>

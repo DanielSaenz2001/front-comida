@@ -1,0 +1,12 @@
+<mat-nav-list>
+    <h1 class="title">MI PROYECTO</h1>
+  
+    <mat-divider></mat-divider>
+    <ng-container *ngFor="let menu of menus">
+        <mat-list-item [routerLink]="[base + menu.link]" routerLinkActive="router-link-active" *ngIf="!menu.hidden">
+            <mat-icon matListItemIcon>{{menu.icon}}</mat-icon>
+            <div matListItemTitle class="list-name">{{menu.title}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+    </ng-container>
+</mat-nav-list>

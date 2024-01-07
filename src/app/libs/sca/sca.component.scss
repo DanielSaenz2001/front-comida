@@ -1,0 +1,27 @@
+mat-drawer {
+  width: 18.2rem;
+  background-color: #898dcc;
+}
+
+mat-drawer-content {
+  width: auto;
+  min-height: 100vh;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+.header {
+  flex-shrink: 0;
+  flex-grow: 0;
+}
+
+.content {
+  flex-shrink: 1;
+  flex-grow: 1;
+}
+
+.margin-content {
+  padding: 10px;
+}

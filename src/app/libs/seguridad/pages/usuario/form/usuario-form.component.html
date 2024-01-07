@@ -1,0 +1,154 @@
+<div class="modal-container">
+    <div mat-dialog-title>
+        <div class="row">
+            <div class="col-10">
+                USUARIO
+            </div>
+            <div class="col-2">
+                <button mat-icon-button aria-label="Cerrar la ventana" tabindex="-1" matTooltip="Cerrar" [mat-dialog-close]="null">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+        <form>
+            <mat-card class="form-container">
+                <mat-card-content>
+                    <div class="row" [formGroup]="formGroup">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="DNI" 
+                                            formControlName="dni"
+                                            maxlength="8">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('dni')?.hasError('required') && (formGroup.get('dni')?.dirty || formGroup.get('dni')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="Email" 
+                                            formControlName="email"  [email]="true">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('email')?.hasError('required') && (formGroup.get('email')?.dirty || formGroup.get('email')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="Nombres" 
+                                            formControlName="nombres">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('nombres')?.hasError('required') && (formGroup.get('nombres')?.dirty || formGroup.get('nombres')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="Apellido Paterno" 
+                                            formControlName="ap_paterno">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('ap_paterno')?.hasError('required') && (formGroup.get('ap_paterno')?.dirty || formGroup.get('ap_paterno')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="Apellido Materno" 
+                                            formControlName="ap_materno">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('ap_materno')?.hasError('required') && (formGroup.get('ap_materno')?.dirty || formGroup.get('ap_materno')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="Fech Nacimiento" 
+                                            formControlName="fec_nacimiento" [matDatepicker]="picker" (dateInput)="formatearFechaInput($event)">
+                                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                        <mat-datepicker #picker></mat-datepicker>
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('fec_nacimiento')?.hasError('required') && (formGroup.get('fec_nacimiento')?.dirty || formGroup.get('fec_nacimiento')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-label align="center">Genero *</mat-label>
+                                    <mat-radio-group formControlName="sexo">
+                                        <mat-radio-button [value]=0>Masculino</mat-radio-button>
+                                        <mat-radio-button [value]=1>Femenino</mat-radio-button>
+                                    </mat-radio-group>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="Télefono" 
+                                            maxlength="9" formControlName="celular">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('celular')?.hasError('required') && (formGroup.get('celular')?.dirty || formGroup.get('celular')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="Dirección" 
+                                            formControlName="direccion">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="Usuario" 
+                                            formControlName="username">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('username')?.hasError('required') && (formGroup.get('username')?.dirty || formGroup.get('username')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                            </div>
+                            <div class="row" *ngIf="data > 0">
+                                <div class="col-12 mb-2">
+                                    <mat-checkbox status="primary" formControlName="estado">Estado</mat-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <button type="button" mat-raised-button color="primary" (click)="save($event)" [disabled]="!formGroup.valid" >
+            <mat-icon>save</mat-icon> GUARDAR
+        </button>
+    </mat-dialog-actions>
+</div>

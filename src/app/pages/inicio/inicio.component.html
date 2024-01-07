@@ -1,0 +1,21 @@
+<div class="container-inicio">
+    <mat-toolbar color="primary">
+        <span>Módulos</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+    </mat-toolbar>
+    <div class="content">
+      <mat-card class="module-card" *ngFor="let modulo of modulos" (click)="enterModule(modulo)">
+        <mat-card-content class="item">
+            <div>
+                <div class="icon">
+                    <mat-icon>{{ modulo.icon }}</mat-icon>
+                </div>
+                <h2 class="text-center">{{ modulo.nombre }}</h2>
+            </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+</div>
