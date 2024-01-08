@@ -16,7 +16,7 @@ import { IPermiso } from '../auth/models/permiso.model';
       (closedStart)="closeSideBar()" 
       [mode]="sideNavMode" 
       [opened]="sideBarOpen">
-      <app-navigator [base]="base" [menus]="menus"></app-navigator>
+      <app-navigator [base]="base" [menus]="menus" [menus2]="menus2"></app-navigator>
     </mat-drawer>
 
     <mat-drawer-content>
@@ -50,6 +50,7 @@ export class ScaComponent implements OnInit {
   portal = "";
   base = "/modulo";
   menus = new Array<IPermisoChildren>();
+  menus2 = new Array<IPermiso>();
   
   constructor(
     public breakpointObserver: BreakpointObserver,
@@ -94,11 +95,12 @@ export class ScaComponent implements OnInit {
     
     var modules: any = this.tokenService.getModulos()
 
-    var modulos = JSON.parse(modules);
+    this.menus2 = JSON.parse(modules);
+
 
     let href = this.router.url;
     
-    modulos.forEach((element: IPermiso) => {
+    this.menus2.forEach((element: IPermiso) => {
       if(element.link == "/seguridad" &&  href.includes(element.link)){
         this.portal = "Seguridad";
         this.menus = element.children;

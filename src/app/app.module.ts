@@ -22,6 +22,7 @@ import { NavigatorComponent } from './libs/sca/shared/navigator/navigator.compon
 import { TokenInterceptor } from './token-interceptor';
 import { registerLocaleData } from '@angular/common';
 import localeEsPE from '@angular/common/locales/es-PE';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 registerLocaleData(localeEsPE);
 
@@ -45,7 +46,8 @@ registerLocaleData(localeEsPE);
     MatButtonModule,
     MatSidenavModule,
     MatDividerModule,
-    MatListModule
+    MatListModule,
+    MatExpansionModule
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'es-PE' },

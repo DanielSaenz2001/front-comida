@@ -1,0 +1,70 @@
+<div class="modal-container">
+    <div mat-dialog-title>
+        <div class="row">
+            <div class="col-10">
+                AGREGAR PRODUCTO
+            </div>
+            <div class="col-2">
+                <button mat-icon-button aria-label="Cerrar la ventana" tabindex="-1" matTooltip="Cerrar" [mat-dialog-close]="null">
+                    <mat-icon>clear</mat-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <mat-dialog-content class="mat-typography">
+        <form>
+            <mat-card class="form-container">
+                <mat-card-content>
+                    <div class="row" [formGroup]="formGroup">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <mat-select color="accent" placeholder="Producto" status="primary" formControlName="producto_id">
+                                            <mat-option *ngFor="let item of productos" [value]="item.id">{{item.nombre}} | {{item.unidad}}</mat-option>
+                                        </mat-select>
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('producto_id')?.hasError('required') && (formGroup.get('producto_id')?.dirty || formGroup.get('producto_id')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="precio unitario" 
+                                            formControlName="precio_unitario">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('precio_unitario')?.hasError('required') && (formGroup.get('precio_unitario')?.dirty || formGroup.get('precio_unitario')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                                <div class="col-sm-12 col-md-6 mb-2">
+                                    <mat-form-field>
+                                        <input matInput 
+                                            status="primary" 
+                                            placeholder="unidad" 
+                                            formControlName="unidad">
+                                    </mat-form-field>
+                                
+                                    <mat-error *ngIf="formGroup.get('unidad')?.hasError('required') && (formGroup.get('unidad')?.dirty || formGroup.get('unidad')?.touched)">
+                                        Este campo es importante.
+                                    </mat-error>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </form>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="center">
+        <button type="button" mat-raised-button color="primary" (click)="save($event)" [disabled]="!formGroup.valid" >
+            <mat-icon>save</mat-icon> GUARDAR
+        </button>
+    </mat-dialog-actions>
+</div>

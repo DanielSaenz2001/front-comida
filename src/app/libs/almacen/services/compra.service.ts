@@ -5,36 +5,36 @@ import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class AlmacenService {
+export class CompraService {
 
-  endPoint =`${environment.api}/api/gestion-almacen`
+  endPoint =`${environment.api}/api/compra`
   constructor(private http:HttpClient) { }
 
   public getAlmacenes( ) {
     return this.http.get<Array<any>>(`${this.endPoint}/almacenes/all` ) ;
   }
 
-  public index(id:any) {
-    return this.http.get<any>(`${this.endPoint}/${id}` ) ;
+  public getProveedores( ) {
+    return this.http.get<Array<any>>(`${this.endPoint}/proveedores/all` ) ;
   }
 
-  public getById(id:any) {
-    return this.http.get(`${this.endPoint}/get/${id}` ) ;
-  }
-
-  public getProductos(id:any) {
-    return this.http.get<Array<any>>(`${this.endPoint}/productos/${id}` ) ;
+  public index( ) {
+    return this.http.get<Array<any>>(`${this.endPoint}` ) ;
   }
 
   public create(data:any) {
     return this.http.post(`${this.endPoint}`, data ) ;
   }
-  
+
   public update(id:any, data:any) {
     return this.http.put(`${this.endPoint}/${id}`, data ) ;
   }
 
   public destroy(id:any) {
     return this.http.delete(`${this.endPoint}/${id}` ) ;
+  }
+
+  public close(id:any) {
+    return this.http.get(`${this.endPoint}/close/${id}` ) ;
   }
 }

@@ -12,6 +12,10 @@ import { DateAdapter, MAT_DATE_FORMATS } from '@angular/material/core';
 import { SharedMaterialModule } from 'src/app/shared/shared-material.module';
 import { AlmacenStockFormComponent } from './pages/almacen/stock/form/almacen-stock-form.component';
 import { EntradaComponent } from './pages/entrada/entrada.component';
+import { CompraComponent } from './pages/entrada/compra/compra.component';
+import { ActionComponent } from './pages/entrada/action/action.component';
+import { DetailComponent } from './pages/entrada/detail/detail.component';
+import { ActionFormComponent } from './pages/entrada/action/form/action-form.component';
 
 
 @NgModule({
@@ -21,7 +25,11 @@ import { EntradaComponent } from './pages/entrada/entrada.component';
     AlmacenComponent,
     AlmacenStockComponent,
     AlmacenStockFormComponent,
-    EntradaComponent
+    EntradaComponent,
+    CompraComponent,
+    ActionComponent,
+    DetailComponent,
+    ActionFormComponent
   ],
   imports: [
     SharedMaterialModule,

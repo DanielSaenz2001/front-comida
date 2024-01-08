@@ -1,12 +1,35 @@
-<mat-nav-list>
+<mat-nav-list class="menu">
     <h1 class="title">MI PROYECTO</h1>
   
     <mat-divider></mat-divider>
-    <ng-container *ngFor="let menu of menus">
-        <mat-list-item [routerLink]="[base + menu.link]" routerLinkActive="router-link-active" *ngIf="!menu.hidden">
-            <mat-icon matListItemIcon>{{menu.icon}}</mat-icon>
-            <div matListItemTitle class="list-name">{{menu.title}}</div>
-        </mat-list-item>
-        <mat-divider></mat-divider>
+    <ng-container *ngIf="!valiable_menu2">
+        <ng-container *ngFor="let menu of menus">
+            <mat-list-item [routerLink]="[base + menu.link]" routerLinkActive="router-link-active" *ngIf="!menu.hidden">
+                <mat-icon matListItemIcon>{{menu.icon}}</mat-icon>
+                <div matListItemTitle class="list-name">{{menu.title}}</div>
+            </mat-list-item>
+            <mat-divider></mat-divider>
+        </ng-container>
+    </ng-container>
+    <ng-container *ngIf="valiable_menu2">
+        <mat-accordion class="example-headers-align">
+            <mat-expansion-panel *ngFor="let menu of menus2" hideToggle>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{menu.nombre}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <mat-icon>{{menu.icon}}</mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                <ng-container *ngFor="let item of menu.children">
+                    <mat-list-item [routerLink]="[base + item.link]" routerLinkActive="router-link-active" *ngIf="!item.hidden">
+                        <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+                        <div matListItemTitle class="list-name">{{item.title}}</div>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </ng-container>
+            </mat-expansion-panel>
+        </mat-accordion>
     </ng-container>
 </mat-nav-list>

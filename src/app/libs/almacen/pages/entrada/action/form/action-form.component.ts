@@ -1,29 +1,31 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { AlmacenService } from 'src/app/libs/almacen/services/almacen.service';
+import { CompraDetalleService } from 'src/app/libs/almacen/services/compra-detalle.service';
 
 @Component({
-  selector: 'app-almacen-stock-form',
-  templateUrl: './almacen-stock-form.component.html',
-  styleUrls: ['./almacen-stock-form.component.scss']
+  selector: 'app-action-form',
+  templateUrl: './action-form.component.html',
+  styleUrls: ['./action-form.component.scss']
 })
-export class AlmacenStockFormComponent implements OnInit {
+export class ActionFormComponent implements OnInit {
 
   formGroup!: FormGroup;
 
   productos = new Array<any>();
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) public data: {dataId: number, almacenId: string},
-    private ownDialogRef: MatDialogRef<AlmacenStockFormComponent>,
-    private almacenService: AlmacenService
+    @Inject(MAT_DIALOG_DATA) public data: {dataId: number, compraId: string, almacenId: string},
+    private ownDialogRef: MatDialogRef<ActionFormComponent>,
+    private compraDetalleService: CompraDetalleService
   ) {
     this.formGroup = new FormGroup({
       id:           new FormControl(null),
+      compra_id:       new FormControl(null),
       producto_id:  new FormControl(null, Validators.required),
-      almacen_id:    new FormControl(null),
-      stock:       new FormControl(null, Validators.required),
+      precio_unitario:    new FormControl(null, Validators.required),
+      unidad:       new FormControl(null, Validators.required),
+      total:       new FormControl(null),
     });
     this.loadData();
   }
@@ -34,13 +36,13 @@ export class AlmacenStockFormComponent implements OnInit {
   
   private loadData() {
 
-    this.almacenService.getProductos(this.data.almacenId).subscribe({
+    this.compraDetalleService.getProductos(this.data.almacenId).subscribe({
       next: (response) => this.productos = response,
       error: (e) => console.log(e)
     });
 
     if (this.data.dataId > 0) {
-      this.almacenService.getById(this.data.dataId).subscribe({
+      this.compraDetalleService.getById(this.data.dataId).subscribe({
         next: (response) => this.formGroup.setValue(response),
         error: (e) => console.log(e)
       });
@@ -48,14 +50,14 @@ export class AlmacenStockFormComponent implements OnInit {
   }
   
   private create(){
-    this.almacenService.create(this.formGroup.value).subscribe({
+    this.compraDetalleService.create(this.formGroup.value).subscribe({
       next: () => this.ownDialogRef.close(true),
       error: (e) => console.log(e)
     })
   }
 
   private update(){
-    this.almacenService.update(this.formGroup.value.id, this.formGroup.value).subscribe({
+    this.compraDetalleService.update(this.formGroup.value.id, this.formGroup.value).subscribe({
       next: () => this.ownDialogRef.close(true),
       error: (e) => console.log(e)
     })
@@ -63,7 +65,7 @@ export class AlmacenStockFormComponent implements OnInit {
 
   save(event: Event) {
     event.stopPropagation();
-    this.formGroup.value.almacen_id = this.data.almacenId;
+    this.formGroup.value.compra_id = this.data.compraId;
 
     if(this.data.dataId > 0) {
       this.update();

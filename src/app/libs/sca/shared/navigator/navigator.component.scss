@@ -10,3 +10,20 @@
 .list-name {
     margin-left: 10px;
 }
+
+mat-expansion-panel {
+  background: transparent !important;
+}
+
+.example-headers-align {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.mat-expansion-panel-header-description {
+    flex-grow: 0 !important;
+}
+
+.mat-expansion-panel-header.mat-expanded {
+    height: 40px !important;
+}
